@@ -1,0 +1,498 @@
+﻿@using EntityLayer.Concrete
+@model TechnologyViewModel
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="/AdminTechnology/Update" id="updateForm">
+    <div class="containerr">
+        <div class="row">
+            <div class="col-md-4">
+                @foreach (var technology1 in Model.Technology1)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-pencil-alt"></i>
+                                API .Net
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <input type="text" name="T1ID" value="@technology1.ID" hidden />
+
+                                <div class="col-md-12">
+                                    <h2>Ana Başlık:</h2>
+                                    <input type="text" name="T1MainTitle" value="@technology1.MainTitle" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Başlık:</h2>
+                                    <input type="text" name="T1Title" value="@technology1.Title" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 1:</h2>
+                                    <textarea id="contentEditor1" name="T1Text1" rows="5" class="form-control col-sm-12" required>@technology1.Text1</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 2:</h2>
+                                    <textarea id="contentEditor2" name="T1Text2" rows="5" class="form-control col-sm-12" required>@technology1.Text2</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 3:</h2>
+                                    <textarea id="contentEditor3" name="T1Text3" rows="5" class="form-control col-sm-12" required>@technology1.Text3</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 4:</h2>
+                                    <textarea id="contentEditor4" name="T1Text4" rows="5" class="form-control col-sm-12" required>@technology1.Text4</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Image 1:</h2>
+                                    <select name="T1Image1" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology1.Image1 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Image 2:</h2>
+                                    <select name="T1Image2" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology1.Image2 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 1:</h2>
+                                    <select name="T1Banner1" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology1.Banner1 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 2:</h2>
+                                    <select name="T1Banner2" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology1.Banner2 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 3:</h2>
+                                    <select name="T1Banner3" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology1.Banner3 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-4">
+                @foreach (var technology2 in Model.Technology2)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-pencil-alt"></i>
+                                FIX/API PROTOCOL
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <input type="text" name="T2ID" value="@technology2.ID" hidden />
+
+                                <div class="col-md-12">
+                                    <h2>Ana Başlık:</h2>
+                                    <input type="text" name="T2MainTitle" value="@technology2.MainTitle" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Başlık:</h2>
+                                    <input type="text" name="T2Title" value="@technology2.Title" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 1:</h2>
+                                    <textarea id="contentEditor5" name="T2Text1" rows="5" class="form-control col-sm-12" required>@technology2.Text1</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 2:</h2>
+                                    <textarea id="contentEditor6" name="T2Text2" rows="5" class="form-control col-sm-12" required>@technology2.Text2</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 3:</h2>
+                                    <textarea id="contentEditor7" name="T2Text3" rows="5" class="form-control col-sm-12" required>@technology2.Text3</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 4:</h2>
+                                    <textarea id="contentEditor8" name="T2Text4" rows="5" class="form-control col-sm-12" required>@technology2.Text4</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Image 1:</h2>
+                                    <select name="T2Image1" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology2.Image1 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Image 2:</h2>
+                                    <select name="T2Image2" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology2.Image2 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 1:</h2>
+                                    <select name="T2Banner1" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology2.Banner1 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 2:</h2>
+                                    <select name="T2Banner2" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology2.Banner2 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 3:</h2>
+                                    <select name="T2Banner3" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology2.Banner3 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-4">
+                @foreach (var technology3 in Model.Technology3)
+                {
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fas fa-pencil-alt"></i>
+                                ITCH MARKET DATA PROTOCOL
+                            </h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <input type="text" name="T3ID" value="@technology3.ID" hidden />
+
+                                <div class="col-md-12">
+                                    <h2>Ana Başlık:</h2>
+                                    <input type="text" name="T3MainTitle" value="@technology3.MainTitle" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Başlık:</h2>
+                                    <input type="text" name="T3Title" value="@technology3.Title" class="form-control" required />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 1:</h2>
+                                    <textarea id="contentEditor9" name="T3Text1" rows="5" class="form-control col-sm-12" required>@technology3.Text1</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 2:</h2>
+                                    <textarea id="contentEditor10" name="T3Text2" rows="5" class="form-control col-sm-12" required>@technology3.Text2</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 3:</h2>
+                                    <textarea id="contentEditor11" name="T3Text3" rows="5" class="form-control col-sm-12" required>@technology3.Text3</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Text 4:</h2>
+                                    <textarea id="contentEditor12" name="T3Text4" rows="5" class="form-control col-sm-12" required>@technology3.Text4</textarea>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Image 1:</h2>
+                                    <select name="T3Image1" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology3.Image1 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Image 2:</h2>
+                                    <select name="T3Image2" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology3.Image2 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 1:</h2>
+                                    <select name="T3Banner1" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology3.Banner1 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 2:</h2>
+                                    <select name="T3Banner2" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology3.Banner2 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h2>Banner 3:</h2>
+                                    <select name="T3Banner3" class="form-control">
+                                        <option value="null">Seçiniz</option>
+                                        @foreach (var image in Model.Images)
+                                        {
+                                            @if (technology3.Banner3 == image.Name)
+                                            {
+                                                <option value="@image.ID" selected>@image.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@image.ID">@image.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" form="updateForm" class="btn btn-primary w-100">Güncelle</button>
+</form>
+
+
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+<script>
+    CKEDITOR.replace('contentEditor1', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor2', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor3', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor4', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor5', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor6', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor7', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor8', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor9', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor10', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor11', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+    CKEDITOR.replace('contentEditor12', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+</script>

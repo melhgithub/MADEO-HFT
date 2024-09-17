@@ -1,0 +1,537 @@
+﻿@using EntityLayer.Concrete
+@using MADEO_HFT.DataTransferObjects
+@using System.ComponentModel
+@using Newtonsoft.Json
+@model ProductsViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Ürün Listesi</h1>
+
+@await Html.PartialAsync("_ScriptImports");
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+
+
+
+<script src="~/lib/jquery-confirm/jquery-confirm.min.js"></script>
+<script src="~/lib/izitoast/js/iziToast.min.js"></script>
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-cubes"></i>
+            Ürünler
+        </h3>
+    </div>
+
+    <div class="card-body">
+        <button id="yeniUrunButton" class="btn btn-primary">Yeni Ürün</button>
+        <br />
+
+        <div id="productTable" class="table-responsive">
+            <table id="productGrid" class="table table-bordered table-striped"></table>
+            <div id="productGridPager"></div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="urunModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Sonuç</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="successMessage">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var firstModal = null;
+    $(document).ready(function () {
+        filterProducts();
+
+        $(document).on('submit', 'form:not(#filterForm)', function (e) {
+            e.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: form.attr('action'),
+                type: form.attr('method'),
+                data: form.serialize(),
+                success: function (response) {
+                    if (response.success) {
+                        $('#urunModal').modal('hide');
+                        showSuccessMessage(response.message);
+                        filterProducts();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function (error) {
+                    alert("Başarısız");
+                }
+            });
+        });
+
+        $(document).on('click', '.open-delete-modal', function () {
+            openDeleteUrunModal(this);
+        });
+
+        $(document).on('click', '.open-edit-modal', function () {
+            openEditUrunModal(this);
+        });
+
+        $(document).on('click', '#yeniUrunButton', function () {
+            console.log("Creating yeni urun modal...");
+            openYeniUrunModal();
+        });
+    });
+
+    function showSuccessMessage(message) {
+        $('#successMessage').text(message);
+        $('#successModal').modal('show');
+
+        setTimeout(function () {
+            $('#successModal').modal('hide');
+        }, 1500);
+    }
+
+    function showDatas(data) {
+        var productGrid = $('#productGrid');
+
+        if (productGrid.length) {
+            productGrid.jqGrid('GridUnload');
+
+            productGrid.jqGrid({
+                data: data,
+                colModel: [
+                    { name: 'title', label: 'Ürün Adı', width: 120 },
+                    { name: 'text', label: 'Açıklama', width: 120 },
+                    { name: 'image', label: 'Ana Resim', width: 120 },
+                    { name: 'slider1', label: 'Slider1', width: 120 },
+                    { name: 'slider2', label: 'Slider2', width: 120 },
+                    { name: 'slider3', label: 'Slider3', width: 120 },
+                    { name: 'slider4', label: 'Slider4', width: 120 },
+                    { name: 'slider5', label: 'Slider5', width: 120 },
+                    {
+                        name: 'actions', label: '', width: 190,
+                        formatter: function (cellValue, options, rowObject) {
+                            var buttons = '<button class="btn btn-primary open-edit-modal" ' +
+                                'data-productid="' + rowObject.id + '" ' +
+                                'data-producttitle="' + rowObject.title + '" ' +
+                                'data-producttext="' + rowObject.text + '" ' +
+                                'data-productimage="' + rowObject.image + '" ' +
+                                'data-productslider1="' + rowObject.slider1 + '" ' +
+                                'data-productslider2="' + rowObject.slider2 + '" ' +
+                                'data-productslider3="' + rowObject.slider3 + '" ' +
+                                'data-productslider4="' + rowObject.slider4 + '" ' +
+                                'data-productslider5="' + rowObject.slider5 + '" ' +
+                                'data-productvideo1link="' + rowObject.video1link + '" ' +
+                                'data-productvideo2link="' + rowObject.video2link + '" ' +
+                                'data-productvideo3link="' + rowObject.video3link + '" ' +
+                                'data-productvideo4link="' + rowObject.video4link + '" ' +
+                                'data-productvideo5link="' + rowObject.video5link + '" ' +
+                                'data-productvideo1title="' + rowObject.video1title + '" ' +
+                                'data-productvideo2title="' + rowObject.video2title + '" ' +
+                                'data-productvideo3title="' + rowObject.video3title + '" ' +
+                                'data-productvideo4title="' + rowObject.video4title + '" ' +
+                                'data-productvideo5title="' + rowObject.video5title + '" ' +
+                                'data-productvideo1text="' + rowObject.video1text + '" ' +
+                                'data-productvideo2text="' + rowObject.video2text + '" ' +
+                                'data-productvideo3text="' + rowObject.video3text + '" ' +
+                                'data-productvideo4text="' + rowObject.video4text + '" ' +
+                                'data-productvideo5text="' + rowObject.video5text + '" ' +
+                                'data-productvideo1="' + rowObject.video1 + '" ' +
+                                'data-productvideo2="' + rowObject.video2 + '" ' +
+                                'data-productvideo3="' + rowObject.video3 + '" ' +
+                                'data-productvideo4="' + rowObject.video4 + '" ' +
+                                'data-productvideo5="' + rowObject.video5 + '"> Düzenle</button> ' +
+                                '<button class="btn btn-warning open-delete-modal" ' +
+                                'data-productid="' + rowObject.id + '">Kaldır</button>';
+
+                            return buttons;
+                        }
+                    }
+                ],
+                pager: '#productGridPager',
+                rowNum: 10,
+                rowList: [10, 20, 30, 40, 50],
+                sortname: 'id',
+                viewrecord: true,
+                autoheight: true,
+                autoWidth: true,
+                responsive: true,
+                footerrow: true,
+                userDataOnFooter: true,
+
+            });
+        }
+    }
+
+    function filterProducts() {
+        var productGrid = $('#productGrid');
+
+        $.ajax({
+            url: '@Url.Action("Filter", "AdminProduct")',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                var data = response;
+                console.log(data);
+                showDatas(data);
+            },
+            error: function (error) {
+                console.log("Hata:", error);
+            }
+        });
+    }
+
+    function openDeleteUrunModal(button) {
+        var data = button.dataset;
+
+        var formContent = `
+                <form method="post" action="@Url.Action("RemoveProduct", "AdminProduct")">
+                <div class="form-group">
+                    <label>Kaldırmak istiyor musunuz ?</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="ID" name="ID" class="form-control" value="${data.productid}" required hidden/>
+                </div>
+
+                <div class="form-group">
+                <input type="submit" value="Kaldır" class="btn btn-warning w-100" />
+                </div>
+                </form>
+                 `;
+
+        $('#modalTitle').text('Ürün Oluştur');
+        $('.modal-body').html(formContent);
+        $('#urunModal').modal('show');
+    }
+
+    function openYeniUrunModal() {
+        var imageOptions = @Html.Raw(JsonConvert.SerializeObject(Model.FilterDto.Images));
+        var formContent = `
+                            <form method="post" action="@Url.Action("AddEditProduct", "AdminProduct")">
+
+                                <div class="form-group">
+                                    <label for="Title">Ürün Adı:</label>
+                                    <input type="text" id="Title" name="Title" class="form-control" required />
+                                </div>
+
+                                 <div class="form-group">
+                                    <label for="Text">Açıklama:</label>
+                                    <textarea type="text" id="Text" name="Text" class="form-control" rows="3" required></textarea>
+                                     </div>
+
+                                <div class="form-group">
+                                    <h2>Video1:</h2>
+                                        <select name="Video1" class="form-control" required="required">
+                                                <option value="1">AKTİF</option>
+                                                <option value="2">AKTİF DEĞİL</option>
+                                        </select>
+                                </div>
+
+                                     <div class="form-group">
+                                        <label for="Video1Title">Video 1 Başlık:</label>
+                                        <input type="text" id="Video1Title" name="Video1Title" class="form-control" required />
+                                     </div>
+
+                                     <div class="form-group">
+                                        <label for="Video1Link">Video 1 Link:</label>
+                                        <input type="text" id="Video1Link" name="Video1Link" class="form-control" required />
+                                     </div>
+
+                                     <div class="form-group">
+                                        <label for="Video1Text">Video 1 Açıklama:</label>
+                                        <textarea type="text" id="Video1Text" name="Video1Text" class="form-control" rows="3" required></textarea>
+                                     </div>
+
+
+
+
+                                    <div class="form-group">
+                                        <h2>Video2:</h2>
+                                            <select name="Video2" class="form-control" required="required">
+                                                    <option value="1">AKTİF</option>
+                                                    <option value="2">AKTİF DEĞİL</option>
+                                            </select>
+                                    </div>
+
+                                         <div class="form-group">
+                                            <label for="Video2Title">Video 2 Başlık:</label>
+                                            <input type="text" id="Video2Title" name="Video2Title" class="form-control" required />
+                                         </div>
+
+                                         <div class="form-group">
+                                            <label for="Video2Link">Video 2 Link:</label>
+                                            <input type="text" id="Video2Link" name="Video2Link" class="form-control" required />
+                                         </div>
+
+                                         <div class="form-group">
+                                            <label for="Video2Text">Video 2 Açıklama:</label>
+                                            <textarea type="text" id="Video2Text" name="Video2Text" class="form-control" rows="3" required></textarea>
+                                         </div>
+
+
+
+                                        <div class="form-group">
+                                            <h2>Video3:</h2>
+                                                <select name="Video3" class="form-control" required="required">
+                                                        <option value="1">AKTİF</option>
+                                                        <option value="2">AKTİF DEĞİL</option>
+                                                </select>
+                                        </div>
+
+                                             <div class="form-group">
+                                                <label for="Video3Title">Video 3 Başlık:</label>
+                                                <input type="text" id="Video3Title" name="Video3Title" class="form-control" required />
+                                             </div>
+
+                                             <div class="form-group">
+                                                <label for="Video3Link">Video 3 Link:</label>
+                                                <input type="text" id="Video3Link" name="Video3Link" class="form-control" required />
+                                             </div>
+
+                                             <div class="form-group">
+                                                <label for="Video3Text">Video 3 Açıklama:</label>
+                                                <textarea type="text" id="Video3Text" name="Video3Text" class="form-control" rows="3" required></textarea>
+                                                 </div>
+
+
+
+                                            <div class="form-group">
+                                                <h2>Video4:</h2>
+                                                    <select name="Video4" class="form-control" required="required">
+                                                            <option value="1">AKTİF</option>
+                                                            <option value="2">AKTİF DEĞİL</option>
+                                                    </select>
+                                            </div>
+
+                                                 <div class="form-group">
+                                                    <label for="Video4Title">Video 4 Başlık:</label>
+                                                    <input type="text" id="Video4Title" name="Video4Title" class="form-control" required />
+                                                 </div>
+
+                                                 <div class="form-group">
+                                                    <label for="Video4Link">Video 4 Link:</label>
+                                                    <input type="text" id="Video4Link" name="Video4Link" class="form-control" required />
+                                                 </div>
+
+                                                 <div class="form-group">
+                                                    <label for="Video4Text">Video 4 Açıklama:</label>
+                                                    <textarea type="text" id="Video4Text" name="Video4Text" class="form-control" rows="3" required></textarea>
+                                                     </div>
+
+
+
+                                                <div class="form-group">
+                                                    <h2>Video5:</h2>
+                                                        <select name="Video5" class="form-control" required="required">
+                                                                <option value="1">AKTİF</option>
+                                                                <option value="2">AKTİF DEĞİL</option>
+                                                        </select>
+                                                </div>
+
+                                                     <div class="form-group">
+                                                        <label for="Video5Title">Video 5 Başlık:</label>
+                                                        <input type="text" id="Video5Title" name="Video5Title" class="form-control" required />
+                                                     </div>
+
+                                                     <div class="form-group">
+                                                        <label for="Video5Link">Video 5 Link:</label>
+                                                        <input type="text" id="Video5Link" name="Video5Link" class="form-control" required />
+                                                     </div>
+
+                                                     <div class="form-group">
+                                                        <label for="Video5Text">Video 5 Açıklama:</label>
+                                                        <textarea type="text" id="Video5Text" name="Video5Text" class="form-control" rows="3" required></textarea>
+                                                     </div>
+
+
+                                 <div class="form-group">
+                                    <label for="Image">Asıl Resim :</label>
+                                    <select id="Image" name="Image" class="form-control">
+                                       <option value="">Seçiniz</option>
+    @foreach (var image in Model.FilterDto.Images)
+    {
+                                                       <option value="@image.ID">@image.Name</option>
+    }
+                                    </select>
+                                 </div>
+
+                                <div class="form-group">
+                                    <label for="Slider1">Slider1:</label>
+                                    <select id="Slider1" name="Slider1" class="form-control">
+                                       <option value="">Seçiniz</option>
+    @foreach (var image in Model.FilterDto.Images)
+    {
+                                                       <option value="@image.ID">@image.Name</option>
+    }
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Slider2">Slider2:</label>
+                                    <select id="Slider2" name="Slider2" class="form-control">
+                                       <option value="">Seçiniz</option>
+    @foreach (var image in Model.FilterDto.Images)
+    {
+                                                       <option value="@image.ID">@image.Name</option>
+    }
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Slider3">Slider3:</label>
+                                    <select id="Slider3" name="Slider3" class="form-control">
+                                       <option value="">Seçiniz</option>
+    @foreach (var image in Model.FilterDto.Images)
+    {
+                                                       <option value="@image.ID">@image.Name</option>
+    }
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Slider4">Slider4:</label>
+                                    <select id="Slider4" name="Slider4" class="form-control">
+                                       <option value="">Seçiniz</option>
+    @foreach (var image in Model.FilterDto.Images)
+    {
+                                                       <option value="@image.ID">@image.Name</option>
+    }
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Slider5">Slider5:</label>
+                                    <select id="Slider5" name="Slider5" class="form-control">
+                                       <option value="">Seçiniz</option>
+    @foreach (var image in Model.FilterDto.Images)
+    {
+                                                       <option value="@image.ID">@image.Name</option>
+    }
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" value="Oluştur" class="btn btn-primary w-100" />
+                                </div>
+
+                            </form>
+                            `;
+
+        $('#modalTitle').text('Ürün Oluştur');
+        $('.modal-body').html(formContent);
+        $('#urunModal').modal('show');
+    }
+
+    function openEditUrunModal(button) {
+        var data = button.dataset;
+        var imageOptions = @Html.Raw(JsonConvert.SerializeObject(Model.FilterDto.Images));
+        var formContent = `
+            <form method="post" action="@Url.Action("AddEditProduct", "AdminProduct")">
+                <div class="form-group">
+                    <input type="text" id="ID" name="ID" class="form-control" value="${data.productid}" required hidden />
+                </div>
+                <div class="form-group">
+                    <label for="Title">Ürün Adı:</label>
+                    <input type="text" id="Title" name="Title" class="form-control" value="${data.producttitle}" required />
+                </div>
+                <div class="form-group">
+                    <label for="Text">Açıklama:</label>
+                    <textarea type="text" id="Text" name="Text" class="form-control" rows="3" required>${data.producttext}</textarea>
+                </div>
+                ${createVideoSelect('Video1', data.productvideo1, data.productvideo1title, data.productvideo1link, data.productvideo1text)}
+                ${createVideoSelect('Video2', data.productvideo2, data.productvideo2title, data.productvideo2link, data.productvideo2text)}
+                ${createVideoSelect('Video3', data.productvideo3, data.productvideo3title, data.productvideo3link, data.productvideo3text)}
+                ${createVideoSelect('Video4', data.productvideo4, data.productvideo4title, data.productvideo4link, data.productvideo4text)}
+                ${createVideoSelect('Video5', data.productvideo5, data.productvideo5title, data.productvideo5link, data.productvideo5text)}
+                ${createImageSelect('Image', data.productimage, imageOptions)}
+                ${createImageSelect('Slider1', data.productslider1, imageOptions)}
+                ${createImageSelect('Slider2', data.productslider2, imageOptions)}
+                ${createImageSelect('Slider3', data.productslider3, imageOptions)}
+                ${createImageSelect('Slider4', data.productslider4, imageOptions)}
+                ${createImageSelect('Slider5', data.productslider5, imageOptions)}
+                <div class="form-group">
+                    <input type="submit" value="Düzenle" class="btn btn-primary w-100" />
+                </div>
+            </form>
+        `;
+
+        $('#modalTitle').text('Ürün Düzenle');
+        $('.modal-body').html(formContent);
+        $('#urunModal').modal('show');
+    }
+
+    function createVideoSelect(name, isActive, title, link, text) {
+        return `
+            <div class="form-group">
+                <h2>${name}:</h2>
+                <select name="${name}" class="form-control" required>
+                    <option value="1" ${isActive === 'true' ? 'selected' : ''}>AKTİF</option>
+                    <option value="2" ${isActive === 'false' ? 'selected' : ''}>AKTİF DEĞİL</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="${name}Title">${name} Başlık:</label>
+                <input type="text" id="${name}Title" name="${name}Title" class="form-control" value="${title}" required />
+            </div>
+            <div class="form-group">
+                <label for="${name}Link">${name} Link:</label>
+                <input type="text" id="${name}Link" name="${name}Link" class="form-control" value="${link}" required />
+            </div>
+            <div class="form-group">
+                <label for="${name}Text">${name} Açıklama:</label>
+                <textarea type="text" id="${name}Text" name="${name}Text" class="form-control" rows="3" required>${text}</textarea>
+            </div>
+        `;
+    }
+
+    function createImageSelect(name, selectedValue, imageOptions) {
+        return `
+            <div class="form-group">
+                <label for="${name}">${name}:</label>
+                <select id="${name}" name="${name}" class="form-control">
+                    <option value="">Seçiniz</option>
+                    ${imageOptions.map(image => `
+                        <option value="${image.ID}" ${selectedValue === image.Name ? 'selected' : ''}>${image.Name}</option>
+                    `).join('')}
+                </select>
+            </div>
+        `;
+    }
+
+</script>

@@ -1,0 +1,151 @@
+﻿@using EntityLayer.Concrete
+@model HomePageAdminViewModel
+@{
+    ViewData["Title"] = "Adim Paneli";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<form method="post" action="/AdminHomePage/Update" id="updateForm">
+    @foreach (var homepage in Model.HomePage)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-pencil-alt"></i>
+                    Düzenle
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <input type="text" name="ID" value="@homepage.ID" hidden />
+                    <div class="col-sm-6">
+                        <h2>Başlık:</h2>
+                        <input type="text" name="Title" value="@homepage.Title" class="form-control" required />
+                    </div>
+                    <div class="col-sm-6">
+                        <h2>İkinci Başlık:</h2>
+                        <input type="text" name="Title2" value="@homepage.Title2" class="form-control" required />
+                    </div>
+                    <div class="col-sm-12">
+                        <h2>Video Link:</h2>
+                        <input type="text" name="VideoLink" value="@homepage.VideoLink" class="form-control" required />
+                    </div>
+                    <div class="col-sm-12">
+                        <h2>Yazı:</h2>
+                        <textarea id="yaziEditor1" name="Text1" rows="4" class="form-control col-sm-12" required>@homepage.Text1</textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <h2>Resim 1: *</h2>
+                        <select name="Image1" class="form-control">
+                            <option value="">Seçiniz</option>
+                            @foreach(var image in Model.Images)
+                            {
+                                @if(homepage.Image1 == image.Name)
+                                {
+                                    <option value="@image.ID" selected>@(image.Name)</option>
+                                }
+                                else
+                                {
+                                    <option value="@image.ID">@(image.Name)</option>
+                                }
+                            }
+                        </select>
+                        <h2>Resim 2:</h2>
+                        <select name="Image2" class="form-control">
+                            <option value="null">Seçiniz</option>
+                            @foreach(var image in Model.Images)
+                            {
+                                @if(homepage.Image2 == image.Name)
+                                {
+                                    <option value="@image.ID" selected>@(image.Name)</option>
+                                }
+                                else
+                                {
+                                    <option value="@image.ID">@(image.Name)</option>
+                                }
+                            }
+                        </select>
+                        <h2>Resim 3:</h2>
+                        <select name="Image3" class="form-control">
+                            <option value="null">Seçiniz</option>
+                            @foreach(var image in Model.Images)
+                            {
+                                @if(homepage.Image3 == image.Name)
+                                {
+                                    <option value="@image.ID" selected>@(image.Name)</option>
+                                }
+                                else
+                                {
+                                    <option value="@image.ID">@(image.Name)</option>
+                                }
+                            }
+                        </select>
+                        <h2>Resim 4:</h2>
+                        <select name="Image4" class="form-control">
+                            <option value="null">Seçiniz</option>
+                            @foreach(var image in Model.Images)
+                            {
+                                @if(homepage.Image4 == image.Name)
+                                {
+                                    <option value="@image.ID" selected>@(image.Name)</option>
+                                }
+                                else
+                                {
+                                    <option value="@image.ID">@(image.Name)</option>
+                                }
+                            }
+                        </select>
+                        <h2>Resim 5:</h2>
+                        <select name="Image5" class="form-control">
+                            <option value="null">Seçiniz</option>
+                            @foreach(var image in Model.Images)
+                            {
+                                @if(homepage.Image5 == image.Name)
+                                {
+                                    <option value="@image.ID" selected>@(image.Name)</option>
+                                }
+                                else
+                                {
+                                    <option value="@image.ID">@(image.Name)</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    }
+</form>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Onay</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bu değişiklikleri kaydetmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button type="submit" form="updateForm" class="btn btn-primary">Evet, Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    CKEDITOR.replace('yaziEditor1', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+    });
+</script>

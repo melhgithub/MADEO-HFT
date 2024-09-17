@@ -1,0 +1,191 @@
+﻿@using EntityLayer.Concrete
+@model LinkEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="/AdminLinks/Update" id="updateForm">
+    @foreach (var link in Model.Link)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-pencil alt"></i>
+                    Düzenle
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <input type="text" name="ID" value="@link.ID" hidden />
+
+                    <div class="col-sm-12" hidden>
+                        <select name="GeneralStatus" class="form-control" hidden>
+                            @if (link.GeneralStatus == (LinkStatuses)1)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h2>LinkedIn:</h2>
+                        <select name="LinkedinStatus" class="form-control" required="required">
+                            @if (link.LinkedinStatus == true)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+
+
+                    <div class="col-sm-2">
+                        <h2>Tiktok:</h2>
+                        <select name="TiktokStatus" class="form-control" required="required">
+                            @if (link.TiktokStatus == true)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+
+
+
+                    <div class="col-sm-2">
+                        <h2>Youtube:</h2>
+                        <select name="YoutubeStatus" class="form-control" required="required">
+                            @if (link.YoutubeStatus == true)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h2>Telegram:</h2>
+                        <select name="TelegramStatus" class="form-control" required="required">
+                            @if (link.TelegramStatus == true)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <h2>WhatsApp:</h2>
+                        <select name="WhatsappStatus" class="form-control" required="required">
+                            @if (link.WhatsappStatus == true)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-sm-2">
+                        <h2>G-Mail:</h2>
+                        <select name="GmailStatus" class="form-control" required="required">
+                            @if (link.GmailStatus == true)
+                            {
+                                <option value="1" selected>AKTİF</option>
+                                <option value="2">AKTİF DEĞİL</option>
+                            }
+                            else
+                            {
+                                <option value="1">AKTİF</option>
+                                <option value="2" selected>AKTİF DEĞİL</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>LinkedIn</h2>
+                        <input type="text" name="Linkedin" value="@link.Linkedin" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>Tiktok</h2>
+                        <input type="text" name="Tiktok" value="@link.Tiktok" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>Youtube</h2>
+                        <input type="text" name="Youtube" value="@link.Youtube" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>Telegram</h2>
+                        <input type="text" name="Telegram" value="@link.Telegram" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>Whatsapp</h2>
+                        <input type="text" name="Whatsapp" value="@link.Whatsapp" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>Gmail</h2>
+                        <input type="text" name="Gmail" value="@link.Gmail" class="form-control" />
+                    </div>
+
+                    <br />
+                    <button type="submit" form="updateForm" class="btn btn-primary">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    }
+</form>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Onay</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bu değişiklikleri kaydetmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">İptal</button>
+                <button type="submit" form="updateForm" class="btn btn-primary">Evet, Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>

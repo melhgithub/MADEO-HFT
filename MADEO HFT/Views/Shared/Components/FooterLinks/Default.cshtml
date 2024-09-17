@@ -1,0 +1,74 @@
+﻿@using EntityLayer.Concrete
+@model FooterLinkModel
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@foreach (var link in Model.Link)
+{
+    @foreach (var footer in Model.Footer)
+    {
+        <div class="text-center footerlinkmargin">
+            <h4><span class="footerLinkTitle text-center">CONTACT WITH US!</span></h4>
+            <h5><span class="footerLinkText text-left">You can contact with us using these links! Don't miss our updates, update logs and more details...</span></h5>
+        </div>
+        <br />
+        <div class="footer-social text-center footerlinkmargin">
+            <div class="copyrighttop">
+                <ul>
+                    @if (link.GmailStatus == true)
+                    {
+                        <li class="mx-3 sociallinkli">
+                            <a class="gmail sociallinktext" href="@link.Gmail">
+                                <i class="fa-solid fa-envelope footerIcon"></i>
+                                <span class="footerlinkclass">Gmail</span>
+                            </a>
+                        </li>
+                    }
+                    @if (link.LinkedinStatus == true)
+                    {
+                        <li class="mx-3 sociallinkli">
+                            <a class="linkedin sociallinktext" href="@link.Linkedin">
+                                <i class="fab fa-linkedin"></i>
+                                <span class="footerlinkclass">LinkedIn</span>
+                            </a>
+                        </li>
+                    }
+                    @if (link.TiktokStatus == true)
+                    {
+                        <li class="mx-3 sociallinkli">
+                            <a class="tiktok sociallinktext" href="@link.Tiktok">
+                                <i class="fab fa-tiktok"></i>
+                                <span class="footerlinkclass">TikTok</span>
+                            </a>
+                        </li>
+                    }
+                    @if (link.YoutubeStatus == true)
+                    {
+                        <li class="mx-3 sociallinkli">
+                            <a class="youtube sociallinktext" href="@link.Youtube">
+                                <i class="fab fa-youtube"></i>
+                                <span class="footerlinkclass">YouTube</span>
+                            </a>
+                        </li>
+                    }
+                    @if (link.TelegramStatus == true)
+                    {
+                        <li class="mx-3 sociallinkli">
+                            <a class="telegram sociallinktext" href="@link.Telegram">
+                                <i class="fab fa-telegram"></i>
+                                <span class="footerlinkclass">Telegram</span>
+                            </a>
+                        </li>
+                    }
+                    @if (link.WhatsappStatus == true)
+                    {
+                        <li class="mx-3 sociallinkli">
+                            <a class="whatsapp sociallinktext" href="@link.Whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                <span class="footerlinkclass">WhatsApp</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+}

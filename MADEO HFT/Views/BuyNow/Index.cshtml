@@ -1,0 +1,173 @@
+﻿@using EntityLayer.Concrete
+@using System.Text
+@using System.Net
+@using Microsoft.AspNetCore.Html
+@model BuyNowViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@foreach (var buynow in Model.BuyNow)
+{
+    <div class="containerr">
+        <div class="row">
+            <div id="carouselExampleIndicators" class="carousel slider ilkcarousel" data-rider="carousel">
+                <ol class="carousel-indicator">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    @foreach (var banners in Model.Banners)
+                    {
+                        @if (!string.IsNullOrEmpty(banners.Banner1))
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        }
+                        @if (!string.IsNullOrEmpty(banners.Banner2))
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        }
+                        @if (!string.IsNullOrEmpty(banners.Banner3))
+                        {
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        }
+                    }
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    @foreach (var banners in Model.Banners)
+                    {
+                        <div class="carousel-item active" style="url('~/Resimler/@banners.Banner1');">
+                            <div class="carousel-caption">
+                            </div>
+                            <img src="~/Resimler/@banners.Banner1" class="d-block w-100" alt="Banner1" />
+                        </div>
+                        @if (!string.IsNullOrEmpty(banners.Banner2))
+                        {
+                            <div class="carousel-item" style="url('~/Resimler/@banners.Banner2');">
+                                <div class="carousel-caption">
+                                </div>
+                                <img src="~/Resimler/@banners.Banner2" class="d-block w-100" alt="Banner2" />
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(banners.Banner3))
+                        {
+                            <div class="carousel-item" style="url('~/Resimler/@banners.Banner3');">
+                                <div class="carousel-caption">
+                                </div>
+                                <img src="~/Resimler/@banners.Banner3" class="d-block w-100" alt="Banner3" />
+                            </div>
+                        }
+                    }
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Prev.</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="row buynowrow2">
+            <div class="col-md-3 buynowproductsdiv">
+                @foreach (var product in Model.Products)
+                {
+                    <a href="/Product/ProductPreviews?productID=@product.ID" class="buynowproductlink">
+                        <div class="card cardforproduct buynowproductcard">
+                            <div class="card-header">
+                                <div class="buynowproductimage">
+                                    <img class="buynowproductimg" src="~/Resimler/@product.Image" />
+                                </div>
+                            </div>
+                            <div class="card-body text-center buynowproducttitlecard-body">
+                                <div class="buynowproducttitle">
+                                    <h4 class="buynowproductname">@product.Title</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+            <div class="col-md-8 buynowlinksandtext">
+                <h2 class="HomePageTitle BuyNowTitle2 text-center">@buynow.Title2</h2>
+                <center><h4 class="BuyNowText2 word-wrap text-center" style="word-wrap: break-word;">@Html.Raw(@buynow.Text2)</h4></center>
+                @foreach (var link in Model.Links)
+                {
+                    <div class="footer-social text-left footerlinkmargin buynowsocial">
+                        <div class="copyrighttop">
+                            <ul>
+                                @if (link.GmailStatus == true)
+                                {
+                                    <li class="mx-3 sociallinklibuynow">
+                                        <a class="gmail sociallinktextbuynow" href="@link.Gmail">
+                                            <i class="fa-solid fa-envelope footerIcon"></i>
+                                            <span class="footerlinkclass">Gmail (@link.Gmail) </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (link.LinkedinStatus == true)
+                                {
+                                    <li class="mx-3 sociallinklibuynow">
+                                        <a class="linkedin sociallinktextbuynow" href="@link.Linkedin">
+                                            <i class="fab fa-linkedin"></i>
+                                            <span class="footerlinkclass">LinkedIn (@link.Linkedin) </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (link.TiktokStatus == true)
+                                {
+                                    <li class="mx-3 sociallinklibuynow">
+                                        <a class="tiktok sociallinktextbuynow" href="@link.Tiktok">
+                                            <i class="fab fa-tiktok"></i>
+                                            <span class="footerlinkclass">TikTok (@link.Tiktok) </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (link.YoutubeStatus == true)
+                                {
+                                    <li class="mx-3 sociallinklibuynow">
+                                        <a class="youtube sociallinktextbuynow" href="@link.Youtube">
+                                            <i class="fab fa-youtube"></i>
+                                            <span class="footerlinkclass">YouTube (@link.Youtube) </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (link.TelegramStatus == true)
+                                {
+                                    <li class="mx-3 sociallinklibuynow">
+                                        <a class="telegram sociallinktextbuynow" href="@link.Telegram">
+                                            <i class="fab fa-telegram"></i>
+                                            <span class="footerlinkclass">Telegram (@link.Telegram) </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (link.WhatsappStatus == true)
+                                {
+                                    <li class="mx-3 sociallinklibuynow">
+                                        <a class="whatsapp sociallinktextbuynow" href="@link.Whatsapp">
+                                            <i class="fab fa-whatsapp"></i>
+                                            <span class="footerlinkclass">WhatsApp (@link.Whatsapp) </span>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        <div class="row">
+            <br />
+            <div class="col-md-6 anasayfailkyazi buynowyazidiv">
+                <h1 class="HomePageTitle BuyNowTitle text-center">@buynow.Title</h1>
+                <h2 class="HomePageText BuyNowText word-wrap" style="word-wrap: break-word;">@Html.Raw(@buynow.Text)</h2>
+            </div>
+            <div class="col-md-6">
+                <img class="buynowResim" src="~/Resimler/@buynow.Resim1" />
+            </div>
+        </div>
+
+    </div>
+}

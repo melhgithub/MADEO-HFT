@@ -1,0 +1,1803 @@
+html {
+    font-size: 14px;
+}
+
+@media(max-width:575px) {
+
+
+    .card.technologyproductcard:hover {
+        transform: translate(20px, 0px);
+    }
+
+    .card.technologyproductcard {
+        transition: 0.3s ease-out;
+        max-width: 100%;
+        margin: 10px 0px 10px 10px;
+        height: auto;
+    }
+
+    h4.text-left.technologytext2.word-wrap {
+        padding: 15px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255, 255, 255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    h4.text-left.technologytext1.word-wrap {
+        padding: 20px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255, 255, 255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    a.technologylinks {
+        transition: 0.3s ease-in-out;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: rgb(25, 46, 60, 1);
+        padding-top: 22px;
+        transform: translate(0px -6px);
+        height: 100%;
+        display: block;
+        padding-inline: 89px;
+        margin-top: 22px;
+    }
+
+    .row.technologylinksrow {
+        transform: translate(0px, -22px);
+        margin-bottom: 0px !important;
+    }
+
+    .dropdown-item {
+        display: block;
+        width: 1% !important;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+        opacity: 1;
+        transform: translate(-2px, 8px);
+        width: 101%;
+        height: 44px;
+        border-radius: 0px 0px 15px 15px;
+    }
+
+    .technologydropdown {
+        text-align: center !important;
+        display: table-cell !important;
+        border-radius: 3px !important;
+        transition: 0.3s ease-in-out !important;
+        color: white !important;
+        border: none;
+        padding: 0px;
+        margin: 0px;
+        font-size: 12px;
+    }
+
+    .containerr.technologylinkscontainer {
+        margin: 15px 0px 35px 0px;
+        border-radius: 16px;
+        border: 5px solid rgb(25, 46, 60);
+    }
+
+    .ourproductscontainer {
+        margin-top: 15px;
+    }
+
+    .col-md-9.productContent {
+        margin-top: 15px;
+        padding-top: 15px;
+        background: rgb(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: ghostwhite;
+    }
+
+    h3.ourotherproduct.list-group-item.disabled {
+        margin-top: 0px;
+    }
+
+    img.buynowResim {
+        scale: 0.9;
+        width: 100%;
+        height: auto;
+    }
+
+    img.buynowproductimg {
+        scale: 1;
+        width: 100%;
+        height: auto;
+    }
+
+    .card.cardforproduct.buynowproductcard {
+        transition: 0.5s ease-out;
+        border: 2px solid white;
+        background-color: rgb(255, 255, 255, 0.5);
+    }
+
+        .card.cardforproduct.buynowproductcard:hover {
+            transform: translate(88px, 0px);
+        }
+
+    .buynowproductname {
+        color: black;
+    }
+
+
+    h4.HomePageText.BuyNowText2.word-wrap.text-center {
+        margin-top: 15px;
+    }
+
+    .col-md-8.buynowlinksandtext {
+        height: 450px;
+        padding-top: 10px;
+        background-color: rgb(255, 255, 255, 0.8);
+    }
+
+    .col-md-3.buynowproductsdiv {
+        background-color: transparent;
+    }
+
+    .row.buynowrow2 {
+        background-color: rgb(255, 255, 255, 0.3);
+    }
+
+    a.buynowproductlink {
+        text-decoration: none;
+    }
+
+    .sociallinklibuynow {
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinklibuynow:hover {
+            transition: 0.5s ease-in;
+            transform: translate(10px,0px);
+        }
+
+    .buynowsocial {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .sociallinktextbuynow {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinktextbuynow:hover {
+            transition: 0.5s ease-in;
+            text-decoration: none;
+            list-style: none;
+            color: #0A1F2D;
+        }
+
+
+
+    img.headerlogo {
+        transform: translate(-10px, -6px);
+    }
+
+    .ikicarousel {
+        transform: scale(0.95) translate(0px, -80px);
+    }
+
+    iframe {
+        transform: translate(-10px, 0px);
+        scale: 0.93;
+        border-radius: 30px;
+        border: 2px solid transparent;
+        width: 103%;
+    }
+
+
+    .container-fluid.top-bar {
+        width: 100%;
+        height: 120px;
+        background: linear-gradient(135deg, #C5F1EE 0%, #0A1F2D 2%, #0A1F2D 37%, #D23A41 33%, #D23A41 27%, #0A1F2D 36%, #0A1F2D 100%);
+    }
+
+    .ilkcarousel {
+        margin-top: 110px;
+        position: relative;
+    }
+
+    .col-md-4.footer-cpy.text-right {
+        margin-top: 20px;
+    }
+
+    .copyrighttop {
+        margin-right: 32px;
+        margin-bottom: 18px;
+    }
+
+    .navbar-toggler:hover {
+        color: white;
+        background-color: white;
+        text-decoration: none;
+    }
+
+    .socialicon {
+        position: relative;
+        top: -1px;
+        right: 6px;
+        font-size: 3.6em;
+        color: #54b3d6;
+    }
+
+    .navbar-collapse {
+        max-height: 250px;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+    }
+
+
+    button .navbar-toggler.navbar-toggler-right.mx-auto {
+        background-color: white;
+    }
+
+    .navbar {
+        background-color: white;
+        border-radius: 15px;
+    }
+
+
+    li.nav-item {
+        width: 100%;
+        font-size: 14px;
+        margin-right: 63px;
+    }
+
+    ul .navbar-nav.mr-auto {
+        margin-left: 69px;
+        width: 100%;
+        border: 1px solid white;
+        border-radius: 15px;
+        transform: translate(-67px, 5px);
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .anasayfailkyazi {
+        padding-top: 10px;
+        scale: 0.9;
+        margin-bottom: 72px;
+        border-radius: 30px;
+        background: rgb(255, 255, 255, 0.07);
+        color: white;
+    }
+}
+
+@media (min-width: 575px) and (max-width: 767px) {
+
+    .card.technologyproductcard:hover {
+        transform: translate(20px, 0px);
+    }
+
+    .card.technologyproductcard {
+        transition: 0.3s ease-out;
+        max-width: 100%;
+        margin: 10px 0px 10px 10px;
+        height: auto;
+    }
+
+    h4.text-left.technologytext2.word-wrap {
+        padding: 15px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255, 255, 255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    h4.text-left.technologytext1.word-wrap {
+        padding: 20px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255, 255, 255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    a.technologylinks {
+        transition: 0.3s ease-in-out;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        background-color: rgb(25, 46, 60, 1);
+        padding-top: 22px;
+        transform: translate(0px -6px);
+        height: 100%;
+        display: block;
+        padding-inline: 89px;
+        margin-top: 22px;
+    }
+
+    .row.technologylinksrow {
+        transform: translate(0px, -22px);
+        margin-bottom: 0px !important;
+    }
+
+    .dropdown-item {
+        display: block;
+        width: 1% !important;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .dropdown-menu.show {
+        transform: translate(0%, 12px);
+    }
+
+    .technologydropdown {
+        text-align: center !important;
+        display: table-cell !important;
+        border-radius: 3px !important;
+        transition: 0.3s ease-in-out !important;
+        color: white !important;
+        font-size: 17px;
+        width: 20%;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+        opacity: 1;
+        transform: translate(0%, 7px);
+    }
+
+    .containerr.technologylinkscontainer {
+        margin: 15px 0px 35px 0px;
+        border-radius: 16px;
+        border: 5px solid rgb(25, 46, 60);
+    }
+
+    .col-md-6.technologyilksol {
+        margin-bottom: 50px;
+    }
+
+    .ourproductscontainer {
+        margin-top: 15px;
+    }
+
+    .col-md-9.productContent {
+        margin-top: 15px;
+        padding-top: 15px;
+        background: rgb(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: ghostwhite;
+    }
+
+    h3.ourotherproduct.list-group-item.disabled {
+        margin-top: 0px;
+    }
+
+    img.buynowResim {
+        scale: 0.9;
+        width: 100%;
+        height: auto;
+    }
+
+    img.buynowproductimg {
+        scale: 1;
+        width: 100%;
+        height: auto;
+    }
+
+    .card.cardforproduct.buynowproductcard {
+        transition: 0.5s ease-out;
+        background-color: rgb(255, 255, 255, 0.6);
+    }
+
+        .card.cardforproduct.buynowproductcard:hover {
+            transform: translate(88px, 0px);
+        }
+
+    .buynowproductname {
+        color: black;
+    }
+
+
+    h4.HomePageText.BuyNowText2.word-wrap.text-center {
+        margin-top: 15px;
+    }
+
+    .col-md-8.buynowlinksandtext {
+        height: 450px;
+        padding-top: 10px;
+        background-color: rgb(255, 255, 255, 0.8);
+    }
+
+    .col-md-3.buynowproductsdiv {
+        background-color: transparent;
+    }
+
+    .row.buynowrow2 {
+        background-color: rgb(255, 255, 255, 0.3);
+    }
+
+    a.buynowproductlink {
+        text-decoration: none;
+    }
+
+    .sociallinklibuynow {
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinklibuynow:hover {
+            transition: 0.5s ease-in;
+            transform: translate(10px,0px);
+        }
+
+    .buynowsocial {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .sociallinktextbuynow {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinktextbuynow:hover {
+            transition: 0.5s ease-in;
+            text-decoration: none;
+            list-style: none;
+            color: #0A1F2D;
+        }
+
+
+
+
+    img.headerlogo {
+        transform: translate(-10px, -6px);
+    }
+
+    iframe {
+        transform: translate(-30px, 0px);
+        scale: 0.93;
+        border-radius: 30px;
+        border: 2px solid transparent;
+        width: 103%;
+    }
+
+    .container-fluid.top-bar {
+        width: 100%;
+        height: 120px;
+        background: linear-gradient(135deg, #C5F1EE 0%, #0A1F2D 2%, #0A1F2D 37%, #D23A41 33%, #D23A41 27%, #0A1F2D 36%, #0A1F2D 100%);
+    }
+
+    .ilkcarousel {
+        margin-top: 110px;
+        position: relative;
+    }
+
+    .col-md-4.footer-cpy.text-right {
+        margin-top: 20px;
+    }
+
+    .copyrighttop {
+        margin-right: 32px;
+        margin-bottom: 18px;
+    }
+
+    .navbar-toggler:hover {
+        color: white;
+        background-color: white;
+        text-decoration: none;
+    }
+
+    .socialicon {
+        position: relative;
+        top: -1px;
+        right: 6px;
+        font-size: 3.6em;
+        color: #54b3d6;
+    }
+
+    .navbar-collapse {
+        max-height: 250px;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+    }
+
+
+    button .navbar-toggler.navbar-toggler-right.mx-auto {
+        background-color: white;
+    }
+
+    .navbar {
+        background-color: white;
+        border-radius: 15px;
+    }
+
+
+    li.nav-item {
+        width: 100%;
+        font-size: 14px;
+        margin-right: 63px;
+    }
+
+    ul .navbar-nav.mr-auto {
+        margin-left: 69px;
+        width: 100%;
+        border: 1px solid white;
+        border-radius: 15px;
+        transform: translate(-67px, 5px);
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .card.technologyproductcard:hover {
+        transform: translate(20px, 0px);
+    }
+
+    .card.technologyproductcard {
+        transition: 0.3s ease-out;
+        max-width: 100%;
+        margin: 10px 0px 10px 10px;
+        height: auto;
+    }
+
+    h4.text-left.technologytext2.word-wrap {
+        padding: 15px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255, 255, 255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    h4.text-left.technologytext1.word-wrap {
+        padding: 20px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255, 255, 255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    .col-md-4.text-center.s2 {
+        padding-top: 13px;
+    }
+
+    a.technologylinks {
+        transition: 0.3s ease-in-out;
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .containerr.technologylinkscontainer {
+        margin: 15px 0px 35px 0px;
+        background-color: rgb(255, 255, 255, 0.8);
+    }
+
+    .dropdown-item {
+        display: block;
+        width: 1% !important;
+        padding: .25rem 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #212529;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+    }
+
+    .dropdown-menu.show {
+        transform: translate(0%, 12px);
+    }
+
+    .technologydropdown {
+        text-align: center !important;
+        display: table-cell !important;
+        border-radius: 3px !important;
+        transition: 0.3s ease-in-out !important;
+        color: white !important;
+        font-size: 20px;
+        width: 20%;
+    }
+
+    .dropdown-menu.show {
+        display: block;
+        opacity: 1;
+        transform: translate(0%, 7px);
+    }
+
+    .containerr.technologylinkscontainer {
+        margin: 15px 0px 35px 0px;
+        border-radius: 16px;
+        border: 5px solid rgb(25, 46, 60);
+    }
+
+    .ourproductscontainer {
+        margin-top: 15px;
+    }
+
+    .col-md-9.productContent {
+        background: rgb(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: ghostwhite;
+    }
+
+    h3.ourotherproduct.list-group-item.disabled {
+        margin-top: 200px;
+    }
+
+    img.buynowResim {
+        border-radius: 30px;
+        scale: 0.9;
+        width: 100%;
+        height: auto;
+    }
+
+    img.buynowproductimg {
+        scale: 1;
+        width: 100%;
+        height: auto;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    .card.cardforproduct.buynowproductcard {
+        transition: 0.5s ease-out;
+        margin-left: 24px;
+        border-radius: 25px 0px 0px 25px;
+        border: 2px solid white;
+        background-color: rgb(255, 255, 255, 0.6);
+    }
+
+        .card.cardforproduct.buynowproductcard:hover {
+            transform: translate(88px, 0px);
+        }
+
+    .buynowproductname {
+        color: black;
+    }
+
+
+    .card-body.text-center.buynowproducttitlecard-body {
+        border-radius: 0px 0px 0px 20px;
+    }
+
+    h4.HomePageText.BuyNowText2.word-wrap.text-center {
+        margin-top: 15px;
+    }
+
+    .col-md-8.buynowlinksandtext {
+        padding-top: 10px;
+        transform: translate(-41px, 0px);
+        background-color: rgb(255, 255, 255, 0.8);
+        border-radius: 0px 30px 30px 0px;
+    }
+
+    .col-md-3.buynowproductsdiv {
+        background-color: transparent;
+    }
+
+    .row.buynowrow2 {
+        background-color: rgb(255, 255, 255, 0.3);
+    }
+
+    a.buynowproductlink {
+        text-decoration: none;
+    }
+
+    .sociallinklibuynow {
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinklibuynow:hover {
+            transition: 0.5s ease-in;
+            transform: translate(10px,0px);
+        }
+
+    .buynowsocial {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .sociallinktextbuynow {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinktextbuynow:hover {
+            transition: 0.5s ease-in;
+            text-decoration: none;
+            list-style: none;
+            color: #0A1F2D;
+        }
+
+
+
+
+    .top-bar {
+        position: absolute;
+        z-index: 999;
+        width: 100%;
+    }
+
+    .ikicarousel {
+        scale: 0.88;
+        transform: translate(-21px, 2px);
+    }
+
+    iframe {
+        transform: translate(-30px, 0px);
+        scale: 0.93;
+        border-radius: 30px;
+        border: 2px solid transparent;
+        width: 103%;
+    }
+
+    .navbar {
+        transform: translate(-34%, 73px);
+        width: 161%;
+        height: 50px;
+        border: none;
+        background-color: white;
+    }
+
+    .navbar-collapse {
+        height: 265px;
+        background-color: white;
+        flex-basis: 100%;
+        flex-grow: 1;
+        align-items: center;
+    }
+
+    .socialicon {
+        font-size: 36px;
+    }
+
+    .ilkcarousel {
+        margin-top: 112px;
+        position: relative;
+    }
+
+    img.headerlogo {
+        scale: 1.2;
+        transform: translate(22px, -1px);
+    }
+
+    .container-fluid.top-bar {
+        width: 100%;
+        height: 126px;
+        background: linear-gradient(135deg, #C5F1EE 0%, #0A1F2D 2%, #0A1F2D 37%, #D23A41 33%, #D23A41 27%, #0A1F2D 36%, #0A1F2D 100%);
+    }
+
+    button.navbar-toggler.navbar-toggler-right.mx-auto.collapsed {
+        transform: translate(0, 0px);
+        background-color: white;
+        font-size: 18px;
+    }
+
+
+    div.headerrow {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    li.nav-item {
+        width: 100%;
+        font-size: 14px;
+        margin-right: 63px;
+    }
+
+    ul .navbar-nav.mr-auto {
+        margin-left: 69px;
+        width: 100%;
+        border: 1px solid white;
+        border-radius: 15px;
+        transform: translate(-67px, 5px);
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .card.technologyproductcard:hover {
+        transform: translate(200px, 0px);
+    }
+
+    .card.technologyproductcard {
+        transition: 0.3s ease-out;
+        max-width: 50%;
+        transform: translate(50%, 0px);
+        margin: 10px 0px 10px 10px;
+        height: auto;
+    }
+
+    h4.text-left.technologytext1.word-wrap {
+        padding: 20px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(10, 31, 45, 0.5);
+        color: white;
+        height: max-content;
+    }
+
+    h4.text-left.technologytext2.word-wrap {
+        padding: 15px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(10, 31, 45, 0.5);
+        color: white;
+        height: max-content;
+    }
+
+    .col-md-4.text-center.s2 {
+        padding-top: 13px;
+    }
+
+    a.technologylinks {
+        transition: 0.3s ease-in-out;
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .containerr.technologylinkscontainer {
+        margin: 15px 0px 35px 0px;
+        background-color: rgb(255, 255, 255, 0.8);
+    }
+
+    .dropdown-menu.techdropdown {
+        transform: translateY(12px);
+    }
+
+    .dropdown-menu.show {
+        transform: translate(-65%, 12px);
+    }
+
+    .technologydropdown {
+        text-align: center !important;
+        display: table-cell !important;
+        border-radius: 3px !important;
+        transition: 0.3s ease-in-out !important;
+        color: white !important;
+        font-size: 20px;
+        width: max-content;
+    }
+
+    .ourproductscontainer {
+        margin-top: 15px;
+    }
+
+    .col-md-9.productContent {
+        background: rgb(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: ghostwhite;
+    }
+
+    h3.ourotherproduct.list-group-item.disabled {
+        margin-top: 200px;
+    }
+
+    img.buynowResim {
+        border-radius: 30px;
+        scale: 0.9;
+        width: 100%;
+        height: auto;
+    }
+
+    img.buynowproductimg {
+        scale: 1;
+        width: 100%;
+        height: auto;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    .card.cardforproduct.buynowproductcard {
+        transition: 0.5s ease-out;
+        margin-left: 24px;
+        border-radius: 25px 0px 0px 25px;
+        border: 2px solid white;
+        background-color: rgb(255, 255, 255, 0.6);
+    }
+
+        .card.cardforproduct.buynowproductcard:hover {
+            transform: translate(88px, 0px);
+        }
+
+    .buynowproductname {
+        color: black;
+    }
+
+
+    .card-body.text-center.buynowproducttitlecard-body {
+        border-radius: 0px 0px 0px 20px;
+    }
+
+    h4.HomePageText.BuyNowText2.word-wrap.text-center {
+        margin-top: 15px;
+    }
+
+    .col-md-8.buynowlinksandtext {
+        padding-top: 10px;
+        transform: translate(-41px, 0px);
+        background-color: rgb(255, 255, 255, 0.8);
+        border-radius: 0px 30px 30px 0px;
+    }
+
+    .col-md-3.buynowproductsdiv {
+        background-color: transparent;
+    }
+
+    .row.buynowrow2 {
+        background-color: rgb(255, 255, 255, 0.3);
+    }
+
+    a.buynowproductlink {
+        text-decoration: none;
+    }
+
+    .sociallinklibuynow {
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinklibuynow:hover {
+            transition: 0.5s ease-in;
+            transform: translate(10px,0px);
+        }
+
+    .buynowsocial {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .sociallinktextbuynow {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinktextbuynow:hover {
+            transition: 0.5s ease-in;
+            text-decoration: none;
+            list-style: none;
+            color: #0A1F2D;
+        }
+
+
+
+    .ikicarousel {
+        scale: 0.95;
+        transform: translate(0px, -24px);
+    }
+
+    iframe {
+        transform: translate(-30px, 0px);
+        scale: 0.93;
+        border-radius: 30px;
+        border: 2px solid transparent;
+        width: 103%;
+    }
+
+    .text-center.footerlinkmargin {
+        margin-left: 56px;
+    }
+
+    p.footercontentmargin {
+        transform: translate(-36px, 10px);
+    }
+
+    .container-fluid.top-bar {
+        width: 100%;
+        height: 78px;
+        background: linear-gradient(135deg, #C5F1EE 0%, #0A1F2D 2%, #0A1F2D 37%, #D23A41 33%, #D23A41 27%, #0A1F2D 36%, #0A1F2D 100%);
+    }
+
+    img.headerlogo {
+        transform: scale(1.76);
+        scale: 1.2;
+        transform: translate(22px, 0px);
+    }
+
+
+
+    .ilkcarousel {
+        padding-top: 61px;
+        margin-bottom: 22px;
+    }
+
+
+
+
+
+    .nav-link {
+        font-size: 1.8em;
+        transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.36);
+        text-transform: uppercase;
+        color: #54b3d6;
+        border: none;
+        box-shadow: inset 0 0 0 0 #54b3d6;
+    }
+
+        .nav-link:hover {
+            color: white;
+            box-shadow: inset 500px 0 0 0 #54b3d6;
+        }
+
+
+
+    li.nav-item {
+        font-size: 9px;
+    }
+
+    ul.navbar-nav.mr-auto {
+        margin-top: -14px;
+        margin-left: 113px;
+    }
+
+
+
+    .socialicon {
+        margin-top: -1px;
+        font-size: 3.3em;
+        color: #54b3d6;
+    }
+}
+
+@media(min-width:1199px) {
+    .card.technologyproductcard:hover {
+        transform: translate(200px, 0px);
+    }
+
+    .card.technologyproductcard {
+        transition: 0.3s ease-out;
+        max-width: 50%;
+        transform: translate(50%, 0px);
+        margin: 10px 0px 10px 10px;
+        height: auto;
+    }
+
+    h4.text-left.technologytext1.word-wrap {
+        padding: 20px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255,255,255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    h4.text-left.technologytext2.word-wrap {
+        padding: 15px;
+        border: 3px solid transparent;
+        border-radius: 15px;
+        background-color: rgb(255,255,255, 0.1);
+        color: white;
+        height: max-content;
+    }
+
+    .containerr.technologylinkscontainer {
+        margin: 15px 0px 35px 0px;
+        background-color: rgb(255, 255, 255, 0.8);
+    }
+
+    a.technologylinks {
+        transition: 0.3s ease-in-out;
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .dropdown-menu.techdropdown {
+        transform: translateY(12px);
+    }
+
+    .dropdown-menu.show {
+        transform: translate(-65%, 12px);
+    }
+
+    .technologydropdown {
+        text-align: center !important;
+        display: table-cell !important;
+        border-radius: 3px !important;
+        transition: 0.3s ease-in-out !important;
+        color: white !important;
+        font-size: 20px;
+        width: max-content;
+    }
+
+    .col-md-9.productContent {
+        background: rgb(255, 255, 255, 0.1);
+        border-radius: 5px;
+        color: ghostwhite;
+    }
+
+    h3.ourotherproduct.list-group-item.disabled {
+        margin-top: 339px;
+    }
+
+    img.buynowResim {
+        transition: 0.3s ease-out;
+        border-radius: 30px;
+        scale: 0.9;
+        width: 100%;
+        height: auto;
+    }
+
+    img.buynowproductimg {
+        scale: 1;
+        width: 100%;
+        height: auto;
+        border-radius: 20px 0px 0px 20px;
+    }
+
+    .card.cardforproduct.buynowproductcard {
+        transition: 0.5s ease-out;
+        margin-left: 60px;
+        margin-bottom: 2px;
+        border-radius: 25px 0px 0px 25px;
+        border: 2px solid white;
+        background-color: rgb(255, 255, 255, 0.6);
+    }
+
+        .card.cardforproduct.buynowproductcard:hover {
+            transform: translate(88px, 0px);
+        }
+
+    .buynowproductname {
+        color: black;
+    }
+
+
+    .card-body.text-center.buynowproducttitlecard-body {
+        border-radius: 0px 0px 0px 20px;
+    }
+
+    h4.HomePageText.BuyNowText2.word-wrap.text-center {
+        margin-top: 15px;
+    }
+
+    .col-md-8.buynowlinksandtext {
+        margin-left: 120px;
+        padding-top: 10px;
+        transform: translate(-41px, 0px);
+        background-color: rgb(255, 255, 255, 0.8);
+        border-radius: 0px 30px 30px 0px;
+    }
+
+    .col-md-3.buynowproductsdiv {
+        background-color: transparent;
+    }
+
+    /*.row.buynowrow2 {
+        background-color: rgb(255, 255, 255, 0.3);
+    }*/
+
+    a.buynowproductlink {
+        text-decoration: none;
+    }
+
+    .sociallinklibuynow {
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinklibuynow:hover {
+            transition: 0.5s ease-in;
+            transform: translate(10px,0px);
+        }
+
+    .buynowsocial {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .sociallinktextbuynow {
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        transition: 0.5s ease-in;
+    }
+
+        .sociallinktextbuynow:hover {
+            transition: 0.5s ease-in;
+            text-decoration: none;
+            list-style: none;
+            color: #0A1F2D;
+        }
+
+
+
+    .container-fluid.top-bar {
+        width: 100%;
+        height: 78px;
+        background: linear-gradient(135deg, #C5F1EE 0%, #0A1F2D 2%, #0A1F2D 37%, #D23A41 33%, #D23A41 27%, #0A1F2D 36%, #0A1F2D 100%);
+    }
+
+    iframe {
+        transform: translate(-30px, 0px);
+        scale: 0.93;
+        border-radius: 30px;
+        border: 2px solid transparent;
+        width: 103%;
+    }
+
+    .ikicarousel {
+        scale: 0.90;
+        transform: translate(-20px, 0px);
+    }
+
+    img.headerlogo {
+        transform: scale(1.76);
+        scale: 1.3;
+        transform: translate(37px, -1px);
+    }
+
+
+
+    .ilkcarousel {
+        padding-top: 61px;
+        margin-bottom: 22px;
+    }
+
+
+
+
+
+    .nav-link {
+        font-size: 1.8em;
+        transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.36);
+        text-transform: uppercase;
+        color: #54b3d6;
+        border: none;
+        box-shadow: inset 0 0 0 0 #54b3d6;
+    }
+
+        .nav-link:hover {
+            color: white;
+            box-shadow: inset 500px 0 0 0 #54b3d6;
+        }
+
+
+
+    li.nav-item {
+        font-size: 13px;
+    }
+
+    ul.navbar-nav.mr-auto {
+        margin-top: -14px;
+        margin-left: 100px;
+    }
+
+
+
+    .socialicon {
+        margin-top: -1px;
+        font-size: 3.3em;
+        color: #54b3d6;
+    }
+}
+
+@media (min-width: 1560px) {
+    .container {
+        max-width: 1440px;
+    }
+}
+
+
+
+
+a.technologylinks:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
+h3.text-left.technologytext4.word-wrap {
+    padding: 15px;
+    border: 3px solid transparent;
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255, 0.1);
+    color: white;
+    height: max-content;
+}
+
+.row.technologyucrow {
+    margin-bottom: 15px;
+}
+
+.row.technologyikirow {
+    background-color: rgb(255, 255, 255, 0.6);
+    margin: 30px 0px 30px 0px;
+    padding: 25px 0px 25px 0px;
+}
+
+img.technologyimage1 {
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+img.technologyimage2 {
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+img.technologyproductimage {
+    width: 100%;
+    height: auto;
+}
+
+.row.technologylinksrow {
+    margin-bottom: 18px;
+}
+
+
+
+h1.title.text-center.technologytitle {
+    color: white;
+}
+
+.anasayfacarouselicinstyle {
+    max-height: 500px;
+}
+
+.cardforproduct-ourproduct:hover {
+    transform: scale(1.04);
+}
+
+.cardforproduct-ourproduct {
+    transition: 0.5s ease-out;
+    border-radius: 13px;
+    background-color: rgb(255, 255, 255, 0.3) !important;
+    color: white;
+}
+
+a.productdetailbuynow.btn.btn-primary {
+    transition: 0.5s ease-in-out;
+    width: 100%;
+    background-color: black;
+    margin-top: 10px;
+    border: none;
+    font-size: 20px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+    a.productdetailbuynow.btn.btn-primary:hover {
+        color: black;
+        background-color: white;
+    }
+
+.productvideolinkul {
+    padding: 5px;
+    background-color: rgb(255,255,255,0.1);
+}
+
+h5.mb-1.productvideotitle {
+    font-size: 28px;
+}
+
+p.mb-1.productvideotext {
+    font-size: 20px;
+}
+
+a.list-group-item.videolinksforproduct.flex-column.align-items-start {
+    transition: 0.5s ease-out;
+    background-color: rgb(10, 31, 45, 0.8);
+    border: 2px solid rgb(10, 31, 45, 0.05);
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+    a.list-group-item.videolinksforproduct.flex-column.align-items-start:hover {
+        background-color: rgb(10, 31, 45, 1);
+        border-radius: 6px;
+    }
+
+.productcarousel {
+    margin-top: 7px;
+}
+
+a.videolinksforproduct {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+}
+
+li .list-group-item.vidolinkproductli {
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 3px;
+}
+
+a.otherproduct {
+    border: none;
+    background-color: rgb(255, 255, 255, 0.01) !important;
+    text-decoration: none;
+    color: white;
+}
+
+.otherproductdiv {
+    transition: 0.3s ease-out;
+}
+
+    .otherproductdiv:hover {
+        transform: translate(3px,3px);
+    }
+
+.technologydropdown {
+    text-align: center !important;
+    display: table-cell !important;
+    border-radius: 3px !important;
+    transition: 0.3s ease-in-out !important;
+    color: white !important;
+}
+
+a.dropdown-item.technologydropdown:hover {
+    color: rgb(10, 31, 45) !important;
+}
+
+.dropdown-menu.techdropdown {
+    background-color: rgb(10, 31, 45);
+    display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+}
+
+
+img.buynowResim:hover {
+    transform: scale(1.05);
+}
+
+.anasayfailkyazi {
+    padding-top: 10px;
+    scale: 0.9;
+    border-radius: 30px;
+    background: rgb(255, 255, 255, 0.07);
+    color: white;
+}
+
+.anasayfaikiyazi {
+    padding-top: 10px;
+    scale: 0.9;
+    border: 2px solid white;
+    border-radius: 30px;
+    background-color: white;
+    color: #0A1F2D;
+}
+
+
+.nav-link {
+    font-size: 1.8em;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.36);
+    text-transform: uppercase;
+    color: #54b3d6;
+    border: none;
+    box-shadow: inset 0 0 0 0 #54b3d6;
+}
+
+    .nav-link:hover {
+        color: white;
+        box-shadow: inset 2000px 0 0 0 #54b3d6;
+    }
+
+.list-group-item.disabled, .list-group-item:disabled {
+    border: none;
+    color: white;
+    pointer-events: none;
+    background-color: rgb(255, 255, 255, 0.001) !important;
+}
+
+a.sociallinktext {
+    color: #23c4af;
+    transition: 0.7s ease-out;
+}
+
+    a.sociallinktext:hover {
+        transition: 0.7s ease-out;
+        text-decoration: none;
+        list-style: none;
+        color: white;
+    }
+
+li.sociallinkli {
+    transition: 0.7s ease-out;
+}
+
+    li.sociallinkli:hover {
+        transition: 0.7s ease-out;
+        transform: translate(35px,5px) rotate(10deg) scale(1.1);
+    }
+
+
+ul.social-list li {
+    display: inline-block;
+}
+
+    ul.social-list li a {
+        transition: 0.5s all;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: block;
+        font-size: 0.9em;
+        text-align: center;
+        -webkit-transition: 0.5s all;
+        -moz-transition: 0.5s all;
+        -o-transition: 0.5s all;
+    }
+
+        ul.social-list li a:hover {
+            opacity: 0.8;
+            transform: rotateY(-360deg);
+            -webkit-transform: rotateY(-360deg);
+            -moz-transform: rotateY(-360deg);
+            -o-transform: rotateY(-360deg);
+            transition: transform 2s;
+        }
+
+.card.forproduct:hover {
+    transition: 0.5s ease-out;
+    transform: scale(1,1) translate(20px,10px);
+}
+
+.footerproducttitle {
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    transition: 0.7s ease-out;
+}
+
+    .footerproducttitle:hover {
+        color: #2B736A;
+        text-decoration: none;
+        list-style: none;
+    }
+
+.ourproducts {
+    color: white;
+}
+
+.designby {
+    color: white;
+}
+
+.footercontenttitle {
+    color: white;
+}
+
+.footercontenttext {
+    color: white;
+}
+
+.read-more {
+    background-color: #2B736A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: background-color 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+    .read-more:hover {
+        background: linear-gradient(180deg, #2B736A, rgba(14, 15, 21, 0.3));
+        animation: hoverAnimation 0.5s ease-in-out forwards;
+    }
+
+@keyframes hoverAnimation {
+    0% {
+        background-color: #2B736A;
+    }
+
+    100% {
+        background: linear-gradient(180deg, #2B736A, rgba(14, 15, 21, 0.3));
+    }
+}
+
+
+.header {
+    position: relative;
+}
+
+.top-bar {
+    position: absolute;
+    z-index: 999;
+    width: 95%;
+}
+
+a.navbar-brand {
+    font-size: 3em;
+    font-weight: 700px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.36);
+    text-transform: uppercase;
+}
+
+div.headerrow {
+    margin-bottom: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    flex: 1;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background: linear-gradient(90deg, rgba(5,36,31,1) 0%, rgba(6,54,47,1) 0%, rgba(6,64,56,1) 13%, rgba(5,75,65,1) 48%, rgba(6,94,82,1) 83%, rgba(6,106,92,1) 100%);
+    overflow-x: hidden;
+}
+
+.ikicarouselinner {
+    border: 2px solid transparent;
+    border-radius: 30px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+a.ilkcarousel-control-prev.ikicarousel {
+    top: 70px;
+}
+
+a.ilkcarousel-control-next.ikicarousel {
+    top: 70px;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+footer {
+    padding-top: 3vh;
+    padding-bottom: 1vh;
+    background-color: #0e0f15;
+}
+
+.footer-grid {
+    width: 100%;
+    height: 100%;
+}
+
+.footerLinkTitle {
+    color: white;
+}
+
+.footerLinkText {
+    color: white;
+}
+
+.sociallinktext {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.footerproduct {
+    text-decoration: none;
+    color: white;
+}
+
+.card.forproduct {
+    border: none;
+    background-color: #0e0f15;
+    transition: 0.5s ease-out;
+}
+
+
+#requestForm {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+}
+
+    #requestForm.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    #requestForm .form-group {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+    }
+
+    #requestForm.show .form-group {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    #requestForm .form-control {
+        transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    }
+
+        #requestForm .form-control:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        }
+
+    #requestForm button {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: opacity 0.8s ease-in-out 0.5s, transform 0.8s ease-in-out 0.5s;
+    }
+
+    #requestForm.show button {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    #requestForm button:hover {
+        animation: bounce 0.3s ease-in-out infinite;
+    }
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}

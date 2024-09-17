@@ -1,0 +1,149 @@
+﻿@using EntityLayer.Concrete
+@model HeaderModel
+@{
+    var technology1 = Model.Technology1;
+    var technology2 = Model.Technology2;
+    var technology3 = Model.Technology3;
+}
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@foreach (var link in Model.Links)
+{
+    <head>
+    </head>
+    <header style="position: relative; top: 0; background-color: white; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div class="container-fluid top-bar">
+            <div class="row headerrow">
+                <div class="col-md-4 logo text-left">
+                    <a class="navbar-brand" href="/Home/Index" style="white-space: nowrap;">
+                        <img src="~/Resimler/header.png" class="headerlogo" />
+                        @* <span style="color: #2B736A;">MADEO</span> HFT *@
+                    </a>
+                </div>
+
+
+                <div class="col-md-8 text-center">
+                    <nav class="navbar navbar-expand-lg navbar-transparent">
+                        <button class="navbar-toggler navbar-toggler-right mx-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="TG">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Home/Index">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Buynow/Index">
+                                        Buy Now
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Product/Index">
+                                        Our Products
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Technology
+                                    </a>
+                                    <div class="dropdown-menu techdropdown" aria-labelledby="navbarDropdown">
+                                        @foreach (var tech in technology1)
+                                        {
+                                            <a class="dropdown-item technologydropdown" href="/Technology/Index?techID=1">@tech.MainTitle</a>
+                                        }
+                                        @foreach (var tech in technology2)
+                                        {
+                                            <a class="dropdown-item technologydropdown" href="/Technology/Index?techID=2">@tech.MainTitle</a>
+                                        }
+                                        @foreach (var tech in technology3)
+                                        {
+                                            <a class="dropdown-item technologydropdown" href="/Technology/Index?techID=3">@tech.MainTitle</a>
+                                        }
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                            <div class="text-right">
+                                <ul class="social-list mt-3">
+                                    @if (link.YoutubeStatus == true)
+                                    {
+                                        <li>
+                                            <a href="@link.Youtube">
+                                                <i class="fab fa-youtube socialicon text-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (link.TelegramStatus == true)
+                                    {
+                                        <li>
+                                            <a href="@link.Telegram">
+                                                <i class="fab fa-telegram socialicon text-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (link.TiktokStatus == true)
+                                    {
+                                        <li>
+                                            <a href="@link.Tiktok">
+                                                <i class="fab fa-tiktok socialicon text-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (link.WhatsappStatus == true)
+                                    {
+                                        <li>
+                                            <a href="@link.Whatsapp">
+                                                <i class="fab fa-whatsapp socialicon text-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (link.LinkedinStatus == true)
+                                    {
+                                        <li>
+                                            <a href="@link.Linkedin">
+                                                <i class="fab fa-linkedin socialicon text-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                    @if (link.GmailStatus == true)
+                                    {
+                                        <li>
+                                            <a href="@link.Gmail">
+                                                <i class="fab fa-envelope socialicon text-right"></i>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+
+        </div>
+    </header>
+}
+
+<script>
+    $(document).ready(function () {
+        $('.dropdown').on('show.bs.dropdown', function () {
+            var $dropdownMenu = $(this).find('.dropdown-menu');
+            $dropdownMenu.addClass('show').css('display', 'block');
+            setTimeout(function () {
+                $dropdownMenu.addClass('show');
+            }, 1);
+        });
+
+        $('.dropdown').on('hide.bs.dropdown', function () {
+            var $dropdownMenu = $(this).find('.dropdown-menu');
+            $dropdownMenu.removeClass('show');
+            setTimeout(function () {
+                $dropdownMenu.css('display', 'none');
+            }, 400);
+        });
+    });
+</script>

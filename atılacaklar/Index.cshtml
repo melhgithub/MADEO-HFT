@@ -1,0 +1,146 @@
+﻿@using EntityLayer.Concrete
+@model TechnologyViewModel
+@using System.ComponentModel
+@using MADEO_HFT.DataTransferObjects
+@using Newtonsoft.Json
+@using System.Linq;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var techID = ViewBag.TechID as int?;
+    IEnumerable<SameTechnologyDatas> technology = null;
+
+    if (techID == 1)
+    {
+        technology = Model.Technology1;
+    }
+    else if (techID == 2)
+    {
+        technology = Model.Technology2;
+    }
+    else if (techID == 3)
+    {
+        technology = Model.Technology3;
+    }
+}
+
+<div class="containerr">
+    <div class="row">
+        <div id="carouselExampleIndicators" class="carousel slider ilkcarousel" data-rider="carousel">
+            <ol class="carousel-indicator">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                @foreach (var banner in technology)
+                {
+                    if (!string.IsNullOrEmpty(banner.Banner1))
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    }
+                    if (!string.IsNullOrEmpty(banner.Banner2))
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    }
+                    if (!string.IsNullOrEmpty(banner.Banner3))
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                @foreach (var banner in technology)
+                {
+                    <div class="carousel-item active" style="url('~/Resimler/@banner.Banner1');">
+                        <div class="carousel-caption"></div>
+                        <img src="~/Resimler/@banner.Banner1" class="d-block w-100" alt="Banner1" />
+                    </div>
+                    @if (!string.IsNullOrEmpty(banner.Banner2))
+                    {
+                        <div class="carousel-item" style="url('~/Resimler/@banner.Banner2');">
+                            <div class="carousel-caption"></div>
+                            <img src="~/Resimler/@banner.Banner2" class="d-block w-100" alt="Banner2" />
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(banner.Banner3))
+                    {
+                        <div class="carousel-item" style="url('~/Resimler/@banner.Banner3');">
+                            <div class="carousel-caption"></div>
+                            <img src="~/Resimler/@banner.Banner3" class="d-block w-100" alt="Banner3" />
+                        </div>
+                    }
+                }
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Prev.</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <br />
+    </div>
+</div>
+
+<div class="containerr technologylinkscontainer">
+    <div class="row technologylinksrow">
+        <div class="col-md-4 text-center">
+            <a href="/Technology/Index?techID=1" class="technologylinks">
+                Technology1
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="/Technology/Index?techID=2" class="technologylinks">
+                Technology2
+            </a>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="/Technology/Index?techID=3" class="technologylinks">
+                Technology3
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="containerr technologydatas">
+    @foreach (var datas in technology)
+    {
+        <div class="row technologyilkrow">
+            <div class="col-md-6 technologyilksol">
+                <h1 class="title text-center technologytitle">@datas.Title</h1>
+                <h3 class="text-left technologytext1 word-wrap" style="word-wrap: break-word;">@datas.Text1</h3>
+                <hr class="divider w-100" />
+                <h3 class="text-left technologytext2 word-wrap" style="word-wrap: break-word;">@datas.Text2</h3>
+            </div>
+
+            <div class="col-md-6 technologyilksag">
+                <img src="~/Resimler/@datas.Image1" class="technologyimage1" />
+                <img src="~/Resimler/@datas.Image2" class="technologyimage2" />
+            </div>
+        </div>
+
+        <div class="row technologyikirow">
+            <div class="technologytext3div w-100">
+                <h2 class="title w-100 text-center word-wrap technologytext3" style="word-wrap: break-word;">@datas.Text3</h2>
+            </div>
+        </div>
+
+        <div class="row technologyucrow">
+            <div class="col-md-6 technologyikisol">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="card technologyproductcard">
+                        <div class="card-header">
+                            <img src="~/Resimler/@product.Image" class="technologyproductimage" />
+                        </div>
+                        <div class="card-body">
+                            <h3 class="title text-left technologyproductname">@product.Title</h3>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-6 technologyikisag">
+                <h3 class="text-left technologytext4 word-wrap" style="word-wrap: break-word;">@datas.Text4</h3>
+            </div>
+        </div>
+    }
+
+</div>

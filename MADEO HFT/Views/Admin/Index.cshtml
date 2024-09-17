@@ -1,0 +1,270 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@await Html.PartialAsync("_ScriptImports");
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/free-jqgrid/4.15.5/jquery.jqgrid.min.js"></script>
+
+
+
+<script src="~/lib/jquery-confirm/jquery-confirm.min.js"></script>
+<script src="~/lib/izitoast/js/iziToast.min.js"></script>
+
+<h1>Hoş Geldin Su Pompası</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-cubes"></i>
+            Adminler
+        </h3>
+    </div>
+
+    <div class="card-body">
+        <button id="yeniAdminButton" class="btn btn-primary">Yeni Admin</button>
+        <br />
+
+        <div id="adminTable" class="table-responsive">
+            <table id="adminGrid" class="table table-bordered table-striped"></table>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Sonuç</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="successMessage">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var firstModal = null;
+
+    $(document).ready(function () {
+        filterAdmins();
+
+
+        $(document).on('click', '.open-delete-modal', function () {
+            openDeleteAdminModal(this);
+        });
+
+        $(document).on('click', '.open-edit-modal', function () {
+            openEditAdminModal(this);
+        });
+
+        $(document).on('click', '#yeniAdminButton', function () {
+            console.log("Creating yeni admin modal...");
+            openYeniAdminModal();
+        });
+
+    });
+
+    function passwordFormatter(cellValue, options, rowObject) {
+        return "*****";
+    }
+
+    function filterAdmins() {
+        var adminGrid = $('#adminGrid');
+
+        $.ajax({
+            url: '@Url.Action("Filter", "Admin")',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                var data = response;
+                console.log(data);
+                showDatas(data);
+            },
+            error: function (error) {
+                alert("Hata:", error);
+            }
+        });
+    }
+
+    function showDatas(data) {
+        var adminGrid = $('#adminGrid');
+        if (adminGrid.length) {
+
+            adminGrid.jqGrid('GridUnload');
+            adminGrid.jqGrid({
+                data: data,
+                colModel: [
+                    { name: 'id', label: 'ID', width: 80 },
+                    { name: 'username', label: 'Kullanıcı Adı', width: 200 },
+                    { name: 'password', label: 'Şifre', width: 255, formatter: passwordFormatter },
+                    {
+                        name: 'actions', label: '', width: 255,
+                            formatter: function(cellValue, options, rowObject) {
+                            var buttons = '<button class="btn btn-primary open-edit-modal" ' +
+                                'data-adminid=' + rowObject.id + '" ' +
+                                'data-adminusername=' + rowObject.username + '" ' +
+                                'data-adminpassword=' + rowObject.password + '">Düzenle</button>' +
+                                '<button class="btn btn-warning open-delete-modal" ' +
+                                'data-adminid="' + rowObject.id + '">Kaldır</button>';
+                            return buttons;
+                        }
+                    },
+
+                ],
+                sortname: 'id',
+                viewrecord: true,
+                autoheight: true,
+                autoWidth: true,
+                responsive: true,
+            });
+        }
+    }
+    function openDeleteAdminModal(button) {
+        var data = button.dataset;
+        var formContent = `
+            <form method="post" action="@Url.Action("RemoveAdmin","Admin")">
+                <div class="form-group">
+                <label>Emin misiniz?</label>
+                </div>
+
+                <div class="form-group">
+                <input type="text" id="ID" name="ID" class="form-control" value="${data.adminid}" required hidden/>
+                </div>
+
+                <div class="form-group">
+                <input type="submit" value="Kaldır" class="btn btn-warning w-100" />
+                </div>
+        </form>
+            `;
+
+        $('#modalTitle').text('Admin Sil');
+        $('.modal-body').html(formContent);
+        $('#adminModal').modal('show');
+    }
+    function openEditAdminModal(button) {
+        var data = button.dataset;
+        var formContent = `
+                                    <form method="post" action="@Url.Action("AddEditAdmin", "Admin")">
+                                    
+                                        <div class="form-group">
+                                            <input type="text" id="ID" name="ID" class="form-control" value="${data.adminid}" required hidden />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="UserName">Kullanıcı Adı:</label>
+                                            <input type="text" id="UserName" name="UserName" class="form-control" value="${data.adminusername}" required />
+                                        </div>
+
+                                        <div class="form-group">
+                                        <label for="OldPassword">Eski Şifre:</label>
+                                        <input type="password" id="OldPassword" name="OldPassword" class="form-control" required />
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="NewPassword">Şifre:</label>
+                                            <input type="password" id="NewPassword" name="NewPassword" class="form-control" required />
+                                             </div>
+
+                                         <div class="form-group">
+                                            <label for="ConfirmNewPassword">Şifre (Tekrar):</label>
+                                            <input type="password" id="ConfirmNewPassword" name="ConfirmNewPassword" class="form-control" required />
+                                             </div>
+
+
+                                        <div class="form-group">
+                                            <input type="submit" value="Düzenle" class="btn btn-primary w-100" />
+                                        </div>
+
+                                    </form>
+                                    `;
+
+        $('#modalTitle').text('Admin Düzenle');
+        $('.modal-body').html(formContent);
+        $('#adminModal').modal('show');
+    }
+
+    function openYeniAdminModal() {
+        var formContent = `
+                                <form method="post" action="@Url.Action("AddEditAdmin", "Admin")">
+
+                                    <div class="form-group">
+                                        <label for="UserName">Kullanıcı Adı:</label>
+                                        <input type="text" id="UserName" name="UserName" class="form-control" required />
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label for="NewPassword">Şifre:</label>
+                                        <input type="password" id="NewPassword" name="NewPassword" class="form-control" required />
+                                         </div>
+
+                                     <div class="form-group">
+                                        <label for="ConfirmNewPassword">Şifre (Tekrar):</label>
+                                        <input type="password" id="ConfirmNewPassword" name="ConfirmNewPassword" class="form-control" required />
+                                         </div>
+
+
+                                    <div class="form-group">
+                                        <input type="submit" value="Oluştur" class="btn btn-primary w-100" />
+                                    </div>
+
+                                </form>
+                                `;
+
+        $('#modalTitle').text('Admin Oluştur');
+        $('.modal-body').html(formContent);
+        $('#adminModal').modal('show');
+    }
+
+    function showSuccessMessage(message) {
+        $('#successMessage').text(message);
+        $('#successModal').modal('show');
+
+        setTimeout(function () {
+            $('#successModal').modal('hide');
+        }, 1500);
+    }
+    $(document).on('submit', 'form:not(#filterForm)', function (e) {
+        e.preventDefault();
+        var form = $(this);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: form.serialize(),
+            success: function (response) {
+                if (response.success) {
+                    $('#adminModal').modal('hide');
+                    showSuccessMessage(response.message);
+                    filterAdmins();
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                alert("Başarısız");
+            }
+        });
+    });
+
+</script>

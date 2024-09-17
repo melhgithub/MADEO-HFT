@@ -1,0 +1,49 @@
+﻿@using EntityLayer.Concrete
+@model FooterEditViewModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post" action="/AdminFooter/Update" id="updateForm">
+    @foreach (var footer in Model.Footer)
+    {
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-pencil-alt"></i>
+                    Düzenle
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <input type="text" name="ID" value="@footer.ID" hidden />
+                    <div class="col-md-12">
+                        <h2>Başlık:</h2>
+                        <input type="text" name="Title" value="@footer.Title" class="form-control" required />
+                    </div>
+                    <div class="col-md-12">
+                        <h2>İçerik:</h2>
+                        <textarea id="contentEditor" name="Content" rows="7" class="form-control col-sm-12" required>@footer.Content</textarea>
+                    </div>
+                    <br />
+                    <br />
+
+                    <button type="submit" form="updateForm" class="btn btn-primary">Güncelle</button>
+                </div>
+            </div>
+        </div>
+    }
+
+</form>
+<script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+
+
+<script>
+
+    CKEDITOR.replace('contentEditor', {
+        removePlugins: 'autogrow',
+        enterMode: CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_BR,
+    });
+</script>

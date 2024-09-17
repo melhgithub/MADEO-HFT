@@ -1,0 +1,21 @@
+﻿
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<footer>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 text-left">
+                @await Component.InvokeAsync("FooterProducts")
+            </div>
+
+            <div class="col-md-4 text-center">
+                @await Component.InvokeAsync("FooterContent")
+            </div>
+
+            <div class="col-md-4 footer-cpy text-right">
+                @await Component.InvokeAsync("FooterLinks")
+            </div>
+        </div>
+        <center class="designby">Design by Nemrudun Görl</center>
+    </div>
+</footer>

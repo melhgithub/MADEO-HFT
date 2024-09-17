@@ -1,0 +1,25 @@
+﻿@using EntityLayer.Concrete
+@model List<Footer>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+@foreach (var footer in Model)
+{
+    <center><h3 class="footercontenttitle">@footer.Title</h3></center>
+    <center class="footercontenttext">
+        <br />
+        @{
+            var content = footer.Content.Length > 165
+            ? footer.Content.Substring(0, 165) + "..."
+            : footer.Content;
+
+            var lines = Enumerable.Range(0, (content.Length + 39) / 40)
+            .Select(i => content.Substring(i * 40, Math.Min(40, content.Length - i * 40)));
+        }
+        @foreach (var line in lines)
+        {
+            <p class="footercontentmargin">@line</p>
+        }
+        <div class="read">
+            <a href="/Technology" class="btn btn-primary read-m read-more w-100">Read More</a>
+        </div>
+    </center>
+}

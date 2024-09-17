@@ -1,0 +1,246 @@
+﻿@using EntityLayer.Concrete
+@using System.ComponentModel
+@using Newtonsoft.Json
+@model ProductViewModel
+@{
+    ViewData["Title"] = "ProductPreviews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    @for (int i = 0; i < Model.Banners.Count; i++)
+    {
+        var banner = Model.Banners[i];
+        var carouselId = "carouselExampleIndicators" + i;
+        <div id="@carouselId" class="carousel slider ilkcarousel" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#@carouselId" data-slide-to="0" class="active"></li>
+
+                @if (!string.IsNullOrEmpty(banner.Banner1))
+                {
+                    <li data-target="#@carouselId" data-slide-to="1"></li>
+                }
+                @if (!string.IsNullOrEmpty(banner.Banner2))
+                {
+                    <li data-target="#@carouselId" data-slide-to="2"></li>
+                }
+                @if (!string.IsNullOrEmpty(banner.Banner3))
+                {
+                    <li data-target="#@carouselId" data-slide-to="3"></li>
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active" style="background-image: url('~/Resimler/@banner.Banner1');">
+                    <div class="carousel-caption">
+                    </div>
+                    <img src="~/Resimler/@banner.Banner1" class="d-block w-100" alt="Banner1" />
+                </div>
+                @if (!string.IsNullOrEmpty(banner.Banner2))
+                {
+                    <div class="carousel-item" style="background-image: url('~/Resimler/@banner.Banner2');">
+                        <div class="carousel-caption">
+                        </div>
+                        <img src="~/Resimler/@banner.Banner2" class="d-block w-100" alt="Slider2" />
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(banner.Banner3))
+                {
+                    <div class="carousel-item" style="background-image: url('~/Resimler/@banner.Banner3');">
+                        <div class="carousel-caption">
+                        </div>
+                        <img src="~/Resimler/@banner.Banner3" class="d-block w-100" alt="Banner3" />
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#@carouselId" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Prev.</span>
+            </a>
+            <a class="carousel-control-next" href="#@carouselId" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="container">
+
+    <div class="row">
+        @for (int j = 0; j < Model.Products.Count; j++)
+        {
+            var product = Model.Products[j];
+            var productCarouselId = "productCarousel" + j;
+            <div class="col-md-3 productVideoLinks">
+
+                <div class="list-group productvideolinkul">
+                    @if (product.Video1)
+                    {
+                        <a href="#" class="list-group-item videolinksforproduct flex-column align-items-start" data-video-url="@product.Video1Link">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 productvideotitle">@product.Video1Title</h5>
+                            </div>
+                            <p class="mb-1 productvideotext">@product.Video1Text</p>
+                        </a>
+                    }
+                    @if (product.Video2)
+                    {
+                        <a href="#" class="list-group-item videolinksforproduct flex-column align-items-start" data-video-url="@product.Video2Link">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 productvideotitle">@product.Video2Title</h5>
+                            </div>
+                            <p class="mb-1 productvideotext">@product.Video2Text</p>
+                        </a>
+                    }
+                    @if (product.Video3)
+                    {
+                        <a href="#" class="list-group-item videolinksforproduct flex-column align-items-start" data-video-url="@product.Video3Link">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 productvideotitle">@product.Video3Title</h5>
+                            </div>
+                            <p class="mb-1 productvideotext">@product.Video3Text</p>
+                        </a>
+                    }
+                    @if (product.Video4)
+                    {
+                        <a href="#" class="list-group-item videolinksforproduct flex-column align-items-start" data-video-url="@product.Video4Link">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 productvideotitle">@product.Video4Title</h5>
+                            </div>
+                            <p class="mb-1 productvideotext">@product.Video4Text</p>
+                        </a>
+                    }
+                    @if (product.Video5)
+                    {
+                        <a href="#" class="list-group-item videolinksforproduct flex-column align-items-start" data-video-url="@product.Video5Link">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1 productvideotitle">@product.Video5Title</h5>
+                            </div>
+                            <p class="mb-1 productvideotext">@product.Video5Text</p>
+                        </a>
+                    }
+                    @foreach (var products in Model.ProductsTwo)
+                    {
+                        if (products.ID != product.ID)
+                        {
+                            <h3 class="ourotherproduct list-group-item disabled">Other Products:</h3>
+                            <a href="/Product/ProductPreviews?productID=@products.ID" class="otherproduct list-group-item">
+                                <div class="otherproductdiv">
+                                    <img src="~/Resimler/@products.Image" class="otherproductimage w-100" />
+                                    <h4 class="otherproducttitle text-left">@products.Title</h4>
+                                </div>
+                            </a>
+                        }
+                    }
+                </div>
+
+
+
+
+            </div>
+            <div class="col-md-9 productContent">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h1 class="productDetailTitle text-left">@product.Title</h1>
+                        <h3 class="productDetailText text-left">@product.Text</h3>
+                    </div>
+                    <div class="col-md-7">
+                        <div id="@productCarouselId" class="carousel slider productcarousel" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#@productCarouselId" data-slide-to="0" class="active"></li>
+                                @if (!string.IsNullOrEmpty(product.Slider1))
+                                {
+                                    <li data-target="#@productCarouselId" data-slide-to="1"></li>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider2))
+                                {
+                                    <li data-target="#@productCarouselId" data-slide-to="2"></li>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider3))
+                                {
+                                    <li data-target="#@productCarouselId" data-slide-to="3"></li>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider4))
+                                {
+                                    <li data-target="#@productCarouselId" data-slide-to="4"></li>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider5))
+                                {
+                                    <li data-target="#@productCarouselId" data-slide-to="5"></li>
+                                }
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active" style="background-image: url('~/Resimler/@product.Slider1');">
+                                    <div class="carousel-caption">
+                                    </div>
+                                    <img src="~/Resimler/@product.Slider1" class="d-block w-100" alt="Slider1" />
+                                </div>
+                                @if (!string.IsNullOrEmpty(product.Slider2))
+                                {
+                                    <div class="carousel-item" style="background-image: url('~/Resimler/@product.Slider2');">
+                                        <div class="carousel-caption">
+                                        </div>
+                                        <img src="~/Resimler/@product.Slider2" class="d-block w-100" alt="Slider2" />
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider3))
+                                {
+                                    <div class="carousel-item" style="background-image: url('~/Resimler/@product.Slider3');">
+                                        <div class="carousel-caption">
+                                        </div>
+                                        <img src="~/Resimler/@product.Slider3" class="d-block w-100" alt="Slider3" />
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider4))
+                                {
+                                    <div class="carousel-item" style="background-image: url('~/Resimler/@product.Slider4');">
+                                        <div class="carousel-caption">
+                                        </div>
+                                        <img src="~/Resimler/@product.Slider4" class="d-block w-100" alt="Slider4" />
+                                    </div>
+                                }
+                                @if (!string.IsNullOrEmpty(product.Slider5))
+                                {
+                                    <div class="carousel-item" style="background-image: url('~/Resimler/@product.Slider5');">
+                                        <div class="carousel-caption">
+                                        </div>
+                                        <img src="~/Resimler/@product.Slider5" class="d-block w-100" alt="Slider5" />
+                                    </div>
+                                }
+                            </div>
+                            <a class="carousel-control-prev" href="#@productCarouselId" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Prev.</span>
+                            </a>
+                            <a class="carousel-control-next" href="#@productCarouselId" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <div class="buynowbuttonforproductdetails">
+                            <a class="productdetailbuynow btn btn-primary" href="/Buynow/Index">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider" />
+                <div class="row">
+                    <iframe src="@product.Video1Link" id="videoFrame" width="100%" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.videolinksforproduct').on('click', function (event) {
+                event.preventDefault();
+                var videoUrl = $(this).data('video-url');
+                $('#videoFrame').attr('src', videoUrl);
+            });
+        });
+    </script>
+}
+-

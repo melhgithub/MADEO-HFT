@@ -1,0 +1,95 @@
+﻿@using EntityLayer.Concrete
+@using System.ComponentModel
+@using Newtonsoft.Json
+@model ProductViewModel
+@using System.Linq;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    @for (int i = 0; i < Model.Banners.Count; i++)
+    {
+        var banner = Model.Banners[i];
+        var carouselId = "carouselExampleIndicators" + i;
+        <div id="@carouselId" class="carousel slider ilkcarousel" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#@carouselId" data-slide-to="0" class="active"></li>
+
+                @if (!string.IsNullOrEmpty(banner.Banner1))
+                {
+                    <li data-target="#@carouselId" data-slide-to="1"></li>
+                }
+                @if (!string.IsNullOrEmpty(banner.Banner2))
+                {
+                    <li data-target="#@carouselId" data-slide-to="2"></li>
+                }
+                @if (!string.IsNullOrEmpty(banner.Banner3))
+                {
+                    <li data-target="#@carouselId" data-slide-to="3"></li>
+                }
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active" style="background-image: url('~/Resimler/@banner.Banner1');">
+                    <div class="carousel-caption">
+                    </div>
+                    <img src="~/Resimler/@banner.Banner1" class="d-block w-100" alt="Banner1" />
+                </div>
+                @if (!string.IsNullOrEmpty(banner.Banner2))
+                {
+                    <div class="carousel-item" style="background-image: url('~/Resimler/@banner.Banner2');">
+                        <div class="carousel-caption">
+                        </div>
+                        <img src="~/Resimler/@banner.Banner2" class="d-block w-100" alt="Slider2" />
+                    </div>
+                }
+                @if (!string.IsNullOrEmpty(banner.Banner3))
+                {
+                    <div class="carousel-item" style="background-image: url('~/Resimler/@banner.Banner3');">
+                        <div class="carousel-caption">
+                        </div>
+                        <img src="~/Resimler/@banner.Banner3" class="d-block w-100" alt="Banner3" />
+                    </div>
+                }
+            </div>
+            <a class="carousel-control-prev" href="#@carouselId" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Prev.</span>
+            </a>
+            <a class="carousel-control-next" href="#@carouselId" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    }
+</div>
+
+<div class="container ourproductscontainer">
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-md-6" style="display:flex;flex-direction:column;margin-bottom:15px;">
+                <a href="/Product/ProductPreviews?productID=@product.ID" style="text-decoration:none;">
+                    <div class="card cardforproduct-ourproduct" style="--bs-card-bg: rgb(255, 255, 255, 0.8);">
+                        <div class="card-header">
+                            <h3 class="text-center title">@product.Title</h3>
+                            <img class="card-img" src="~/Resimler/@product.Image" style="max-height:342px;" />
+                        </div>
+                        <div class="card-body">
+                            <div class="producttext">
+                                @{
+                                    var words = product.Text?.Split(' ').Take(15);
+                                    var shortText = string.Join(" ", words) + (words.Count() >= 15 ? "..." : "");
+                                }
+                                <h4 class="title">
+                                    @shortText
+                                </h4>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

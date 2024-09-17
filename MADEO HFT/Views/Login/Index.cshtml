@@ -1,0 +1,104 @@
+﻿@using EntityLayer.Concrete
+@using MADEO_HFT.DataTransferObjects
+@using System.ComponentModel
+@using Newtonsoft.Json
+@model AdminsLoginViewModel
+@{
+    ViewData["Title"] = "Admin Giriş";
+    Layout = null;
+}
+
+
+@await Html.PartialAsync("_ScriptImports")
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-color:#f8f9fa;
+        }
+
+        .login-container{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .login-card{
+            width:350px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container login-container">
+        <div class="card login-card">
+            <div class="card-body">
+                <h4 class="card-title text-center">Admin Giriş</h4>
+                <div class="form-group">
+                    <label formaction="userName">Kullanıcı Adı:</label>
+                    <input type="text" class="form-control" id="userName" placeholder="Kullanıcı Adı" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre:</label>
+                    <input type="password" class="form-control" id="password" placeholder="Şifre" />
+                </div>
+                <button type="button" class="btn btn-primary btn-block" id="loginButton">Giriş Yap</button>
+                <div class="mt-3 text-center" id="errorMessage"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loginMessageModal" tabindex="-1" role="dialog" aria-labelledby="loginMessageModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginMessageModalLabel">Bilgi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="loginMessageModalBody"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#userName, #password").keypress(function (event) {
+                if (event.which === 13) {
+                    $("#loginButton").click();
+                }
+            });
+
+            $("#loginButton").click(function () {
+                var userName = $("#userName").val();
+                var password = $("#password").val();
+
+                $.ajax({
+                    url: "/Login/Index",
+                    type: "POST",
+                    data: {
+                        userName: userName,
+                        password: password
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            window.location.href = result.redirectUrl;
+                        } else {
+                            $("#loginMessageModalBody").html(result.message);
+                            $("#loginMessageModal").modal("show");
+                        }
+                    },
+                    error: function () {
+                        $("#loginMessageModalBody").html("Bir hata oluştu");
+                        $("#loginMessageModal").modal("show");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
